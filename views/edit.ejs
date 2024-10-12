@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Data Pengguna</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        th {
+            background-color: #091057;
+            color: white;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #091057;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Data Pengguna</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Telepon</th>
+        </tr>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.nama %></td>
+            <td><%= user.email %></td>
+            <td><%= user.phone %></td>
+        </tr>
+    </table>
+    <form action="/update/<%= user.id %>" method="post">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required value="<%= user.nama %>"><br> 
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required value="<%= user.email %>"><br> 
+        <label for="phone">Telepon:</label>
+        <input type="text" name="phone" id="phone" required value="<%= user.phone %>"><br> 
+        <button type="submit" onclick="return confirmEdit()">Simpan</button>
+    </form>
+    
+</body>
+<script>
+    function confirmEdit (){
+        return confirm("Data berhasil di Update");
+    }
+</script>
+</html>
